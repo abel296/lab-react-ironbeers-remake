@@ -1,0 +1,26 @@
+body {
+    font-family: sans-serif;
+}
+
+.card {
+    border: none;
+    --bs-card-inner-border-radius: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+}
+
+:hover {
+    color: initial;
+}
+
+.home {
+    border-left: 1px solid #f4f4f4;
+    border-right: 2px solid #f4f4f4;
+}
+
+p, p:hover{
+    color: #b5b5b5;
+}
