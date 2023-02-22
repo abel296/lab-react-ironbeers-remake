@@ -1,10 +1,11 @@
 import { Table } from "react-bootstrap"
+import { BeersListCard } from "./BeersListCard"
 
 export const BeersList = ({ beerList }) => {
     return (
         <Table hover >
             <tbody>
-                { beerList && beerList?.map(elm => <tr> <td> <img src={ elm.image_url } alt={ elm.name }></img>  { elm.name } </td> </tr>) }
+                { beerList && beerList?.map(elm => <BeersListCard { ...elm } key={ elm.id } />) }
             </tbody>
         </Table>
     )

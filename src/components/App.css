@@ -21,7 +21,7 @@ a {
     border-right: 2px solid #f4f4f4;
 }
 
-p, p:hover{
+p, h5, p:hover{
     color: #b5b5b5;
 }
 
@@ -30,6 +30,20 @@ p, p:hover{
 }
 
 img {
-    width: 3rem;
+    width: 2.5rem;
     margin: 1rem;
+    height: 150px;
+}
+
+.list-element {
+    display: flex;
+}
+
+.body-list-card {
+    margin: 2rem;
+    height: 2rem;
+}
+
+.list-row {
+    height: 100px;
 }
