@@ -28,3 +28,8 @@ p, p:hover{
 .icon-home :hover {
     color: #ffffff 
 }
+
+img {
+    width: 3rem;
+    margin: 1rem;
+}
