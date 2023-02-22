@@ -24,3 +24,7 @@ a {
 p, p:hover{
     color: #b5b5b5;
 }
+
+.icon-home :hover {
+    color: #ffffff 
+}
