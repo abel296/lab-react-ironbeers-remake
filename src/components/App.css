@@ -7,7 +7,7 @@ body {
     --bs-card-inner-border-radius: none;
 }
 
-a {
+a , a:hover {
     text-decoration: none;
     color: #000000;
 }
@@ -21,7 +21,7 @@ a {
     border-right: 2px solid #f4f4f4;
 }
 
-p, h5, p:hover{
+.card-body p, p:hover, .tagline, .contribiuted-by {
     color: #b5b5b5;
 }
 
@@ -46,4 +46,38 @@ td img {
 
 .list-row {
     height: 100px;
+}
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    margin-top: 4rem;
+}
+
+.details-card img {
+    width: 6rem;
+    height: 20rem;
+    align-self: center;
+}   
+
+.body-list-card article {
+    display: flex;
+    justify-content: space-between;
+}
+
+.attenuation {
+    color: #b5b5b5;
+}
+
+.contribiuted-by {
+    margin-top: 1rem;
+    font-size: small;
+}
+
+.description {
+    margin-top: 1rem;
+}
+
+.tagline{
+    font-size: 1.2rem;
 }
