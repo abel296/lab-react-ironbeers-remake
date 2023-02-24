@@ -1,21 +1,21 @@
-import axios from "axios"
+
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
+import { BeerService } from "../../../service/beers.service"
 import { Navigation } from "../../layout/Navigation"
 import defaultImage from './keg.png'
 
-export const BeerNew = ({ simulateNewBeerFromApi }) => {
+export const BeerNew = ({ simulateNewBeerFromApi, listLength }) => {
     const [form, setForm] = useState({})
+    const [id, setId] = useState(listLength)
+    const beerService = new BeerService()
 
-    const requestNewBeerToApi = async () => {
-        const response = await axios.create().post('https://ih-beers-api2.herokuapp.com/beers/new', form)
-        response.status === 200 && simulateNewBeerFromApi({ ...form, image_url: defaultImage })
-    }
-
-    const handleForm = e => {
+    const handleForm = async e => {
         e.preventDefault()
         try {
-            requestNewBeerToApi()
+            const response = await beerService.createNewBeer(form)
+            response.status === 200 && simulateNewBeerFromApi({ ...form, image_url: defaultImage, id: id + 1 })
+            setId(id + 1)
         } catch (error) {
             console.error(error)
         }

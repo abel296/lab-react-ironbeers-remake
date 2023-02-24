@@ -31,7 +31,7 @@ function App() {
       <Route path='/beers' element={ <Beers beerList={ beerList } /> } />
       <Route path='/beers/:id' element={ <BeerDetails beerList={ beerList } /> } />
       <Route path='/random-beer' element={ <BeerRandom /> } />
-      <Route path='/new-beer' element={ <BeerNew simulateNewBeerFromApi={ newBeer => simulateNewBeerFromApi(newBeer) } /> } />
+      <Route path='/new-beer' element={ <BeerNew simulateNewBeerFromApi={ newBeer => simulateNewBeerFromApi(newBeer) } listLength={ beerList?.length } /> } />
     </Routes>
   )
 }
