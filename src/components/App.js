@@ -6,6 +6,7 @@ import { Beers } from './pages/Beers/Beers';
 import { BeerDetails } from './pages/Beers/BeerDetails';
 import { useEffect, useState } from 'react';
 import { BeerService } from '../service/beers.service';
+import { BeerRandom } from './pages/Beers/BeerRandom';
 
 function App() {
   const [beerList, setBeerList] = useState()
@@ -24,6 +25,7 @@ function App() {
       <Route path='/' element={ <Home /> } />
       <Route path='/beers' element={ <Beers beerList={ beerList } /> } />
       <Route path='/beers/:id' element={ <BeerDetails beerList={ beerList } /> } />
+      <Route path='/random-beer' element={ <BeerRandom /> } />
     </Routes>
   )
 }

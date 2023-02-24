@@ -4,4 +4,5 @@ export class BeerService {
     }
 
     getAllBeers = () => fetch(`${ this.baseUrl }/beers`)
+    getRandomBeer = () => fetch(`${ this.baseUrl }/beers/random`)
 }
