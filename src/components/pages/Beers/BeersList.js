@@ -6,7 +6,7 @@ export const BeersList = ({ beerList }) => {
         <Container>
             <Table hover>
                 <tbody>
-                    { beerList && beerList?.map(elm => <BeersListCard { ...elm } key={ elm.id } />) }
+                    { beerList && beerList.map(elm => <BeersListCard { ...elm } key={ elm.id } />) }
                 </tbody>
             </Table>
         </Container>
