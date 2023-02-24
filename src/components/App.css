@@ -81,3 +81,17 @@ td img {
 .tagline{
     font-size: 1.2rem;
 }
+
+form {
+    margin: 2rem;
+}
+
+form .form-control, .form-button {
+    border-radius: 2rem;
+}
+
+.form-button {
+    color: #ffffff;
+    margin-top: 1rem;
+    width: 100%;
+}
