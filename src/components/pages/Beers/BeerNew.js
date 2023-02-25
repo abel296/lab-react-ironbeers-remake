@@ -1,6 +1,6 @@
-
 import { useState } from "react"
 import { Button, Container, Form } from "react-bootstrap"
+import { useNavigate } from "react-router-dom"
 import { BeerService } from "../../../service/beers.service"
 import { Navigation } from "../../layout/Navigation"
 import defaultImage from './keg.png'
@@ -8,6 +8,7 @@ import defaultImage from './keg.png'
 export const BeerNew = ({ simulateNewBeerFromApi, listLength }) => {
     const [form, setForm] = useState({})
     const [id, setId] = useState(listLength)
+    const navigate = useNavigate()
     const beerService = new BeerService()
 
     const handleForm = async e => {
@@ -16,6 +17,7 @@ export const BeerNew = ({ simulateNewBeerFromApi, listLength }) => {
             const response = await beerService.createNewBeer(form)
             response.status === 200 && simulateNewBeerFromApi({ ...form, image_url: defaultImage, id: id + 1 })
             setId(id + 1)
+            navigate('/beers')
         } catch (error) {
             console.error(error)
         }
