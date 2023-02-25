@@ -90,6 +90,15 @@ form .form-control, .form-button {
     border-radius: 2rem;
 }
 
+.form-button:hover {
+    color: #ffffff;
+}
+
+.btn-info {
+    --bs-btn-active-color: #0dcaf0;
+    --bs-btn-active-bg: #ffffff;
+}
+
 .form-button {
     color: #ffffff;
     margin-top: 1rem;
