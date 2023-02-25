@@ -5,18 +5,19 @@ import { BeerService } from "../../../service/beers.service"
 import { Navigation } from "../../layout/Navigation"
 import defaultImage from './keg.png'
 
-export const BeerNew = ({ simulateNewBeerFromApi, listLength }) => {
+export const BeerNew = ({ simulateNewBeerFromApi, listLength, handleAlert }) => {
     const [form, setForm] = useState({})
     const [id, setId] = useState(listLength)
     const navigate = useNavigate()
     const beerService = new BeerService()
 
-    const handleForm = async e => {
+    const handleSubmit = async e => {
         e.preventDefault()
         try {
             const response = await beerService.createNewBeer(form)
             response.status === 200 && simulateNewBeerFromApi({ ...form, image_url: defaultImage, id: id + 1 })
             setId(id + 1)
+            handleAlert(true, 'Info', 'New beer created successfully')
             navigate('/beers')
         } catch (error) {
             console.error(error)
@@ -33,7 +34,7 @@ export const BeerNew = ({ simulateNewBeerFromApi, listLength }) => {
         <>
             <Navigation />
             <Container className="d-flex flex-column align-items-center">
-                <Form onSubmit={ e => handleForm(e) } className="col-8">
+                <Form onSubmit={ e => handleSubmit(e) } className="col-8">
                     <Form.Group className="mb-3" controlId="name">
                         <Form.Label column><strong>Name</strong></Form.Label>
                         <Form.Control name="name" type="text" placeholder="Enter name" onChange={ e => handleInputChange(e) } />
