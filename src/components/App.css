@@ -113,3 +113,9 @@ form .form-control, .form-button {
     bottom: 1rem;
     right: 0;
 }
+
+i {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}

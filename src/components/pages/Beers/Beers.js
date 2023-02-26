@@ -1,11 +1,14 @@
+import { Container } from "react-bootstrap"
 import { Navigation } from "../../layout/Navigation"
 import { BeersList } from "./BeersList"
 
-export const Beers = ({ beerList }) => {
+export const Beers = ({ beerList, apiError }) => {
     return (
         <>
             <Navigation />
-            <BeersList beerList={ beerList } />
+            <Container>
+                { !apiError ? <BeersList beerList={ beerList } /> : <><i>Ups, something went wrong showing the beers</i></> }
+            </Container>
         </>
     )
 }

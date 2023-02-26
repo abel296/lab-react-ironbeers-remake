@@ -13,9 +13,19 @@ import { Alert } from './shared/Alert';
 function App() {
   const [beerList, setBeerList] = useState()
   const [alert, setAlert] = useState({ show: false })
+  const [apiError, setApiError] = useState()
 
   const beerService = new BeerService()
-  const getAllBeersFromApi = async () => setBeerList(await (await beerService.getAllBeers()).json())
+  const getAllBeersFromApi = async () => {
+    const response = await beerService.getAllBeers()
+    if (response.status === 200) {
+      setBeerList(await response.json())
+      setApiError(false)
+    } else {
+      console.log(response)
+      setApiError(true)
+    }
+  }
 
   try {
     useEffect(() => getAllBeersFromApi(), [])
@@ -35,7 +45,7 @@ function App() {
     <>
       <Routes>
         <Route path='/' element={ <Home /> } />
-        <Route path='/beers' element={ <Beers beerList={ beerList } /> } />
+        <Route path='/beers' element={ <Beers beerList={ beerList } apiError={ apiError } /> } />
         <Route path='/beers/:id' element={ <BeerDetails beerList={ beerList } /> } />
         <Route path='/random-beer' element={ <BeerRandom /> } />
         <Route path='/new-beer' element={ <BeerNew
