@@ -1,3 +1,7 @@
+:root {
+    --blue-info: #0dcaf0;
+}
+
 body {
     font-family: sans-serif;
 }
@@ -95,7 +99,7 @@ form .form-control, .form-button {
 }
 
 .btn-info {
-    --bs-btn-active-color: #0dcaf0;
+    --bs-btn-active-color: var(--blue-info);
     --bs-btn-active-bg: #ffffff;
 }
 
@@ -109,12 +113,24 @@ form .form-control, .form-button {
     z-index: 9999;
     position: fixed;
     --bs-toast-bg: #ffffff;
-    --bs-toast-header-bg: #0dcaf0;
+    --bs-toast-header-bg: var(--blue-info);
     bottom: 1rem;
     right: 0;
 }
 
 i {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.pagination {
+    --bs-pagination-focus-box-shadow: none;
+    --bs-pagination-color: var(--blue-info);
+    --bs-pagination-active-bg: var(--blue-info);
+    --bs-pagination-active-border-color: var(--blue-info);
+    --bs-pagination-focus-color: var(--blue-info);
+    --bs-pagination-hover-color: var(--blue-info);
     display: flex;
     justify-content: center;
     margin-top: 2rem;

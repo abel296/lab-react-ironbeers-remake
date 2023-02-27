@@ -14,10 +14,11 @@ function App() {
   const [beerList, setBeerList] = useState()
   const [alert, setAlert] = useState({ show: false })
   const [apiError, setApiError] = useState()
+  const [listPage, setListPage] = useState(1)
 
   const beerService = new BeerService()
   const getAllBeersFromApi = async () => {
-    const response = await beerService.getAllBeers()
+    const response = await beerService.getAllBeers(listPage)
     if (response.status === 200) {
       setBeerList(await response.json())
       setApiError(false)
@@ -28,7 +29,7 @@ function App() {
   }
 
   try {
-    useEffect(() => getAllBeersFromApi(), [])
+    useEffect(() => getAllBeersFromApi(), [listPage])
   } catch (error) {
     console.error(error)
   }
@@ -41,11 +42,21 @@ function App() {
     setAlert({ show: state, tittle, message })
   }
 
+  const handlePage = ({ page, previous, next }) => {
+    if (previous && listPage > 1) {
+      setListPage(listPage - 1)
+    } else if (next && listPage < 5) {
+      setListPage(listPage + 1)
+    } else if (page) {
+      setListPage(page)
+    }
+  }
+
   return (
     <>
       <Routes>
         <Route path='/' element={ <Home /> } />
-        <Route path='/beers' element={ <Beers beerList={ beerList } apiError={ apiError } /> } />
+        <Route path='/beers' element={ <Beers beerList={ beerList } apiError={ apiError } handlePage={ ({ page, previous, next }) => handlePage({ page, previous, next }) } /> } />
         <Route path='/beers/:id' element={ <BeerDetails beerList={ beerList } /> } />
         <Route path='/random-beer' element={ <BeerRandom /> } />
         <Route path='/new-beer' element={ <BeerNew

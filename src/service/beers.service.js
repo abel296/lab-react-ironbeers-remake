@@ -5,7 +5,7 @@ export class BeerService {
         this.baseUrl = "https://api.punkapi.com/v2"
     }
 
-    getAllBeers = () => fetch(`${ this.baseUrl }/beers?per_page=80`)
+    getAllBeers = page => fetch(`${ this.baseUrl }/beers?page=${page}&per_page=80`)
     getRandomBeer = () => fetch(`${ this.baseUrl }/beers/random`)
     createNewBeer = body => axios.create().post('https://ih-beers-api2.herokuapp.com/beers/new', body)
 }
